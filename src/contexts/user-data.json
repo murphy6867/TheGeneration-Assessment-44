@@ -1,20 +1,38 @@
 [
     {
         "id": 0,
-        "name": "mock",
-        "lastname": "mocklastname",
+        "name": "Alex",
+        "lastname": "Murphy",
         "position": "Manager"
     },
     {
         "id": 1,
-        "name": "employee 1",
-        "lastname": "em",
-        "position": "Engineer"
+        "name": "Pether",
+        "lastname": "Quill",
+        "position": "Software Engineer"
     },
     {
         "id": 2,
-        "name": "employee 2",
-        "lastname": "lord",
+        "name": "Ering",
+        "lastname": "Halaand",
         "position": "Designer"
+    },
+    {
+        "id": 3,
+        "name": "Kevin",
+        "lastname": "De Byun",
+        "position": "QA"
+    },
+    {
+        "id": 4,
+        "name": "Pep",
+        "lastname": "Guardiola",
+        "position": "Project Manager"
+    },
+    {
+        "id": 5,
+        "name": "Ruben",
+        "lastname": "Dias",
+        "position": "Dev Op"
     }
 ]

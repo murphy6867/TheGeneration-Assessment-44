@@ -11,23 +11,23 @@ const Header = () => {
           className="w-32" 
         />
       </Link>
-      <nav className="flex w-96 justify-around text-nav-text text-xl">
+      <nav className="flex w-96 justify-around text-nav-text text-xl font-bold">
         <NavLink className="hover:text-white cursor-pointer"
           to="/"
         >
           Home
         </NavLink>
-        <NavLink className="hover:text-white cursor-pointer"
+        <NavLink className="hover:text-white cursor-pointer font-bold"
           to="user"
         >
           User
         </NavLink>
-        <NavLink className="hover:text-white cursor-pointer"
+        <NavLink className="hover:text-white cursor-pointer font-bold"
           to="admin"
         >
           Admin
         </NavLink>
-        <NavLink className="hover:text-white cursor-pointer"
+        <NavLink className="hover:text-white cursor-pointer font-bold"
           to="owner"
         >
           Owner

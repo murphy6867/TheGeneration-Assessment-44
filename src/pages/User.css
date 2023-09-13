@@ -1,6 +1,13 @@
 #UserMain {
-    background-image: url('https://storage.googleapis.com/pr-newsroom-wp/1/2019/04/RapCaviar_PANTHEON_Hero_NoBranding.jpg');
+    background-image: url('https://www.igroovemusic.com/wp-content/uploads/2021/04/spotify_update.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+#UserMain section {
+    background: linear-gradient(110deg, #e3b221 60%, #1ED860 60%);
+    box-shadow: 10px 10px 71px -5px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 71px -5px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 71px -5px rgba(0,0,0,0.75);
 }

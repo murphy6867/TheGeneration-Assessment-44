@@ -1,4 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+library.add(
+  faFacebook,
+  faTwitter,
+  faInstagram
+);
 
 const Footer = () => {
   return (
@@ -8,26 +16,26 @@ const Footer = () => {
           alt="logo"
           className='w-36'
         />
-        <div className='flex justify-around bg-slate-500'>
-          <h1 className='uppercase text-gray-400'>company</h1>
-          <h1 className='uppercase text-gray-400'>communities</h1>
-          <h1 className='uppercase text-gray-400'>useful links</h1>
+        <div className='flex justify-around w-[30vw]'>
+          <h1 className='font-bold uppercase text-gray-400'>company</h1>
+          <h1 className='font-bold uppercase text-gray-400'>communities</h1>
+          <h1 className='font-bold uppercase text-gray-400'>useful links</h1>
         </div>
         <div className=''>
-          <ul className='flex justify-around bg-slate-500'>
+          <ul className='flex w-[12vw] justify-around'>
             <li>
-              <a href="#" className='w-[50px] h-[50px]'>
-                <img src="" alt="logo-" className='w-[20px] h-[20px]' />
+              <a href="#" className='w-[50px] h-[50px] flex items-center justify-center hover:bg-gray-700 rounded-full'>
+                <FontAwesomeIcon icon="fa-brands fa-instagram" size="xl" style={{color: "#ffffff",}} />
               </a>
             </li>
             <li>
-              <a href="#" className='w-[50px] h-[50px]'>
-                <img src="" alt="logo-" className='w-[20px] h-[20px]' />
+              <a href="#" className='w-[50px] h-[50px] flex items-center justify-center hover:bg-gray-700 rounded-full'>
+                <FontAwesomeIcon icon="fa-brands fa-twitter" size="xl" style={{color: "#ffffff",}} />
               </a>
             </li>
             <li>
-              <a href="#" className='w-[50px] h-[50px]'>
-                <img src="" alt="logo-" className='w-[20px] h-[20px]' />
+              <a href="#" className='w-[50px] h-[50px] flex items-center justify-center hover:bg-gray-700 rounded-full'>
+                <FontAwesomeIcon icon="fa-brands fa-facebook" size="xl" style={{color: "#ffffff",}} />
               </a>
             </li>
           </ul>

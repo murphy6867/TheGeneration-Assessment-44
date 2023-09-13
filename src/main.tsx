@@ -4,7 +4,6 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  Link
 } from 'react-router-dom';
 import Homepage from './pages/Home';
 import Owner from './pages/Owner';

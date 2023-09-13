@@ -12,12 +12,24 @@ const Table = (props) => {
     } else if (props.permission === false) {
       setPermission(false)
     }
-  }, [props.permission])
+  }, [props.permission]);
 
-  const addMemberHandler = (newMember) => {
-    setMemberData((prevMemberData) => [...prevMemberData, newMember])
-    console.log(newMember)
-  };
+  useEffect(() => {
+
+    console.log(props.newMember)
+
+    const addNewMemberHandler = () => {
+
+      if (props.newMember && props.newMember.name && props.newMember.lastname && props.newMember.position) {
+        const updatedMemberData = [...memberData, props.newMember];
+        setMemberData(updatedMemberData);
+      }
+    }
+
+    if (props.newMember) {
+      addNewMemberHandler();
+    }
+  }, [props.newMember, memberData]);
 
   return (
     <div className="relative overflow-x-auto overflow-auto rounded-t-xl">

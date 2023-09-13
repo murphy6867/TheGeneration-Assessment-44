@@ -4,26 +4,28 @@ import './Admin.css'
 
 const Admin = () => {
 
-  const [memberInfo, setMemberInfo] = useState({
-    fName: '',
-    lName: '',
-    position: '',
-  })
+  const [memberFname, setMemberFname] = useState('')
+  const [memberLname, setMemberLname] = useState('')
+  const [memberPos, setMemberPos] = useState('')
+  let newMember = {
+    "name": "",
+    "lastname": "",
+    "position": ""
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const { fName, lName, position } = event.target;
+    newMember = {
+      "name": memberFname,
+      "lastname": memberLname,
+      "position": memberPos,
+    }
 
-    setMemberInfo({
-      fName: fName.value,
-      lName: lName.value,
-      position: position.value,
-    });
+    setMemberFname('')
+    setMemberLname('')
+    setMemberPos('')
 
-    fName.value = '';
-    lName.value = '';
-    position.value = '';
   }
 
   return (
@@ -34,24 +36,24 @@ const Admin = () => {
           <form onSubmit={handleSubmit}>
             <input className='bg-transparent border-2 border-black rounded-xl px-5 py-2 text-white' placeholder='Name ...' type="text" 
               name="em-name" id="emName"
-              value={memberInfo.fName}
-              onChange={(ev) => setMemberInfo({ ...memberInfo, fName: ev.target.value})}
+              value={memberFname}
+              onChange={(ev) => setMemberFname(ev.target.value)}
               />
             <input className='bg-transparent border-2 border-black rounded-xl px-5 py-2 text-white mx-4' placeholder='Lastname ...' type="text" 
               name="em-last-name" id="emLastName"
-              value={memberInfo.lName}
-              onChange={(ev) => setMemberInfo({ ...memberInfo, lName: ev.target.value})} 
+              value={memberLname}
+              onChange={(ev) => setMemberLname(ev.target.value)} 
               />
             <input className='bg-transparent border-2 border-black rounded-xl px-5 py-2 text-white' placeholder='Position ...' type="text" 
               name="em-position" id="emPosition" 
-              value={memberInfo.position}
-              onChange={(ev) => setMemberInfo({ ...memberInfo, position: ev.target.value})}
+              value={memberPos}
+              onChange={(ev) => setMemberPos(ev.target.value)}
               />
             <button className='ms-4 text-white py-2 px-4 hover:drop-shadow-2xl bg-[#1BD760] rounded-xl' type='submit'>Submit</button>
           </form>
         </div>
         <div>
-          <Table permission={true} newMember={memberInfo}/>
+          <Table permission={true} newMember={newMember}/>
         </div>
       </section>
     </main>

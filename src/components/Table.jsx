@@ -66,7 +66,7 @@ const Table = (props) => {
                     </td>
                    {permission === true ? <td className="px-6 py-4">
                       <button className='py-2 px-3 hover:bg-emerald-500 hover:border-white border-2 text-white rounded-xl me-3'
-                      onClick={() => props.handleFix(member)}
+                      onClick={() => props.handleEdit(member)}
                       >
                         Edit
                       </button>

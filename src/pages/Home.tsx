@@ -1,8 +1,10 @@
 import './Home.css'
 import { Link } from 'react-router-dom'
 
+interface Homepage {
+}
 
-function Homepage() {
+function Homepage(): JSX.Element {
   return (
     <main className='w-[100%] h-[90vh] bg-black flex items-center justify-center' 
       id='Homepage'

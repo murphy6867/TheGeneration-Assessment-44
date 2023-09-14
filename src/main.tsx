@@ -23,6 +23,7 @@ const router = createBrowserRouter(createRoutesFromElements(
 ))
 
 
+// eslint-disable-next-line react-refresh/only-export-components
 function App() {
   return (
     <RouterProvider router={router} />
@@ -30,5 +31,5 @@ function App() {
 }
 
 ReactDOM
-  .createRoot(document.getElementById('root')!)
+  .createRoot(document.getElementById('root'))
   .render(<App />);

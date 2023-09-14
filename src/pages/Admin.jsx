@@ -5,7 +5,7 @@ import './Admin.css'
 const Admin = () => {
 
   // For add member
-  const [id, setId] = useState(Math.floor(Math.random() * 99));
+  const id = Math.floor(Math.random() * 99);
   const [name, setMemberFname] = useState('');
   const [lastname, setMemberLname] = useState('');
   const [position, setMemberPos] = useState('');
@@ -17,11 +17,11 @@ const Admin = () => {
   });
 
   // Function Fix for static data
-  const handleFixItem = (item) => {
-    setMemberFname(item.name)
-    setMemberLname(item.lastname)
-    setMemberPos(item.position)
-  }
+  // const handleFixItem = (item) => {
+  //   setMemberFname(item.name)
+  //   setMemberLname(item.lastname)
+  //   setMemberPos(item.position)
+  // }
 
   // Function Add Member
   const handleSubmit = (ev) => {
@@ -34,6 +34,11 @@ const Admin = () => {
         position: position,
       });
     }
+
+  // Function Edit Member
+  const handleEdit = (member) => {
+    console.log(member)
+  }
 
   return (
     <main>
@@ -64,7 +69,7 @@ const Admin = () => {
           </form>
         </div>
         <div>
-          <Table permission={true} handleFix={handleFixItem}  newMember={teamMembers} />
+          <Table permission={true} handleEdit={handleEdit}  newMember={teamMembers} />
         </div>
       </section>
     </main>

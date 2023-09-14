@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import './NotFound.css'
 
-export default function NotFound() {
+const NotFound:React.FC = () => {
     return (
         <main className="w-[100%] h-[86.14vh] text-white bg-slate-300 flex flex-col items-center justify-center" id="NotFoundMain">
             <h1 className="text-xl">Sorry, the page you were looking for was not found.</h1>
@@ -9,3 +9,5 @@ export default function NotFound() {
         </main>
     )
 }
+
+export default NotFound

@@ -5,7 +5,8 @@ import './Admin.css'
 const Admin = () => {
 
   // For add member
-  const id = Math.floor(Math.random() * 99);
+  const uuid = Math.floor(Math.random() * 99);
+  const [, setId] = useState(0);
   const [name, setMemberFname] = useState('');
   const [lastname, setMemberLname] = useState('');
   const [position, setMemberPos] = useState('');
@@ -16,19 +17,12 @@ const Admin = () => {
     position: ''
   });
 
-  // Function Fix for static data
-  // const handleFixItem = (item) => {
-  //   setMemberFname(item.name)
-  //   setMemberLname(item.lastname)
-  //   setMemberPos(item.position)
-  // }
-
   // Function Add Member
-  const handleSubmit = (ev) => {
+  const handleSubmit = (ev: React.FormEvent) => {
     ev.preventDefault();
 
     setTeamMembers({
-        id: id,
+        id: uuid,
         name: name,
         lastname: lastname,
         position: position,
@@ -36,8 +30,12 @@ const Admin = () => {
     }
 
   // Function Edit Member
-  const handleEdit = (member) => {
-    console.log(member)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleEdit = (member:any) => {
+    setId(member.id)
+    setMemberFname(member.name)
+    setMemberLname(member.lastname)
+    setMemberPos(member.position)
   }
 
   return (
@@ -69,7 +67,7 @@ const Admin = () => {
           </form>
         </div>
         <div>
-          <Table permission={true} handleEdit={handleEdit}  newMember={teamMembers} />
+          <Table permission={true}  newMember={teamMembers} getMember={handleEdit}/>
         </div>
       </section>
     </main>

@@ -1,6 +1,6 @@
 import './Owner.css';
 
-const Owner = () => {
+const Owner:React.FC = () => {
   return (
     <main className='w-[100%] h-[86.14vh] bg-slate-300 flex items-center justify-center' id="OwnerMain">
       <div className='bg-owner-bg w-[50vw] h-[60vh] rounded-xl flex flex-col items-center justify-center'>

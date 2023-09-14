@@ -10,7 +10,7 @@ import Owner from './pages/Owner';
 import User from './pages/User';
 import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
-import Layout from './components/Layout';
+import Layout from './components/Layout.tsx';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout />}>
@@ -31,5 +31,5 @@ function App() {
 }
 
 ReactDOM
-  .createRoot(document.getElementById('root'))
+  .createRoot(document.getElementById('root')!)
   .render(<App />);

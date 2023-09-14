@@ -1,7 +1,20 @@
-import { useEffect, useState } from 'react';
+import { Key, useEffect, useState } from 'react';
 import Employees from '../contexts/user-data';
 
-const Table = (props) => {
+interface Member {
+  id: number;
+  name: string;
+  lastname: string;
+  position: string;
+}
+
+interface TableProps {
+  permission: boolean;
+  newMember?: Member;
+  getMember?: (member: Member) => void;
+}
+
+const Table: React.FC<TableProps> = (props) => {
 
   const [permission, setPermission] = useState(true);
   const [members, setMembers] = useState(Employees)
@@ -18,9 +31,9 @@ const Table = (props) => {
   }, [props.permission]);
   
   // Function Delete for static data
-  const handleDelete = (id) => {
+  const handleDelete = (id: number) => {
     
-    const updateItems = members.filter((item) => item.id !== id);
+    const updateItems = members.filter((item: { id: number; }) => item.id !== id);
     setMembers(updateItems);
 
   }
@@ -29,6 +42,7 @@ const Table = (props) => {
     if (props.newMember && props.newMember.name !== '') {
       setMembers([...members, props.newMember]);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.newMember])
 
 
@@ -53,7 +67,7 @@ const Table = (props) => {
             </thead>
             <tbody className=''>
                 {
-                  members.map((member, index) => (
+                  members.map((member: Member, index: Key | null | undefined) => (
                   <tr key={index} className="border-b-2 border-gray-700">
                     <th scope="row" className="px-6 py-4 text-xl text-white whitespace-nowrap">
                       {member.name}
@@ -66,7 +80,7 @@ const Table = (props) => {
                     </td>
                    {permission === true ? <td className="px-6 py-4">
                       <button className='py-2 px-3 hover:bg-emerald-500 hover:border-white border-2 text-white rounded-xl me-3'
-                      onClick={() => props.handleEdit(member)}
+                      onClick={() => props.getMember?.(member) ?? (() => {})}
                       >
                         Edit
                       </button>

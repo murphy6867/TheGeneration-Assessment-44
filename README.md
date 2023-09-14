@@ -1,28 +1,22 @@
-# React + TypeScript + Vite
+# The Generation Assessment 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Links
 
-Currently, two official plugins are available:
+- Live Site URL: [https://the-generation-assessment-44.vercel.app/]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## My process
 
-## Expanding the ESLint configuration
+My workflow is divided into 5 steps.
+  1. Design process
+  2. Route process
+  3. Create Home page, User page, Admin page, Owner page and  Not Found page.
+  4. Create Component Tabel, Header, Footer and Layout
+  5. Working on logic to add, delete 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Built with
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# TheGeneration-Assessment-44
+- Vite
+- React
+- TypeScript
+- Tailwind CSS
+- FontAwesome

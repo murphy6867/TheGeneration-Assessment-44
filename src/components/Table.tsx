@@ -28,8 +28,6 @@ const Table = (props) => {
   useEffect(() => {
     if (props.newMember && props.newMember.name !== '') {
       setMembers([...members, props.newMember]);
-      console.log(props.newMember)
-      console.log(members)
     }
   }, [props.newMember])
 

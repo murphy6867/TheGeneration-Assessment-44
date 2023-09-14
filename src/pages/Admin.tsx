@@ -1,32 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Table from '../components/Table'
 import './Admin.css'
 
 const Admin = () => {
 
-  const [memberFname, setMemberFname] = useState('')
-  const [memberLname, setMemberLname] = useState('')
-  const [memberPos, setMemberPos] = useState('')
-  let newMember = {
-    "name": "",
-    "lastname": "",
-    "position": ""
+  // For add member
+  const [id, setId] = useState(Math.floor(Math.random() * 99));
+  const [name, setMemberFname] = useState('');
+  const [lastname, setMemberLname] = useState('');
+  const [position, setMemberPos] = useState('');
+  const [teamMembers, setTeamMembers] = useState({
+    id: 0,
+    name: '',
+    lastname: '',
+    position: ''
+  });
+
+  // Function Fix for static data
+  const handleFixItem = (item) => {
+    setMemberFname(item.name)
+    setMemberLname(item.lastname)
+    setMemberPos(item.position)
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  // Function Add Member
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
 
-    newMember = {
-      "name": memberFname,
-      "lastname": memberLname,
-      "position": memberPos,
+    setTeamMembers({
+        id: id,
+        name: name,
+        lastname: lastname,
+        position: position,
+      });
     }
-
-    setMemberFname('')
-    setMemberLname('')
-    setMemberPos('')
-
-  }
 
   return (
     <main>
@@ -36,24 +43,28 @@ const Admin = () => {
           <form onSubmit={handleSubmit}>
             <input className='bg-transparent border-2 border-black rounded-xl px-5 py-2 text-white' placeholder='Name ...' type="text" 
               name="em-name" id="emName"
-              value={memberFname}
+              value={name}
               onChange={(ev) => setMemberFname(ev.target.value)}
               />
             <input className='bg-transparent border-2 border-black rounded-xl px-5 py-2 text-white mx-4' placeholder='Lastname ...' type="text" 
               name="em-last-name" id="emLastName"
-              value={memberLname}
+              value={lastname}
               onChange={(ev) => setMemberLname(ev.target.value)} 
               />
             <input className='bg-transparent border-2 border-black rounded-xl px-5 py-2 text-white' placeholder='Position ...' type="text" 
               name="em-position" id="emPosition" 
-              value={memberPos}
+              value={position}
               onChange={(ev) => setMemberPos(ev.target.value)}
               />
-            <button className='ms-4 text-white py-2 px-4 hover:drop-shadow-2xl bg-[#1BD760] rounded-xl' type='submit'>Submit</button>
+            <button className='ms-4 text-white py-2 px-4 hover:drop-shadow-2xl bg-[#1BD760] rounded-xl' type='submit'
+              
+            >
+              Submit
+            </button>
           </form>
         </div>
         <div>
-          <Table permission={true} newMember={newMember}/>
+          <Table permission={true} handleFix={handleFixItem}  newMember={teamMembers} />
         </div>
       </section>
     </main>

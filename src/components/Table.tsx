@@ -1,38 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import data from '../contexts/user-data.json';
+import Employees from '../contexts/user-data';
 
 const Table = (props) => {
-  const getData = JSON.stringify(data)
-  const [memberData, setMemberData] = useState(JSON.parse(getData));
-  const [permission, setPermission] = useState(true);
 
+  const [permission, setPermission] = useState(true);
+  const [members, setMembers] = useState(Employees)
+
+  // Check permission of User or Admin
   useEffect(()=>{
+
     if (props.permission === true) {
       setPermission(true)
     } else if (props.permission === false) {
       setPermission(false)
     }
+
   }, [props.permission]);
+  
+  // Function Delete for static data
+  const handleDelete = (id) => {
+    
+    const updateItems = members.filter((item) => item.id !== id);
+    setMembers(updateItems);
+
+  }
 
   useEffect(() => {
-
-    console.log(props.newMember)
-
-    const addNewMemberHandler = () => {
-
-      if (props.newMember && props.newMember.name && props.newMember.lastname && props.newMember.position) {
-        const updatedMemberData = [...memberData, props.newMember];
-        setMemberData(updatedMemberData);
-      }
+    if (props.newMember && props.newMember.name !== '') {
+      setMembers([...members, props.newMember]);
+      console.log(props.newMember)
+      console.log(members)
     }
+  }, [props.newMember])
 
-    if (props.newMember) {
-      addNewMemberHandler();
-    }
-  }, [props.newMember, memberData]);
 
   return (
-    <div className="relative overflow-x-auto overflow-auto rounded-t-xl">
+    <div className="max-h-96 relative overflow-y-auto rounded-t-xl">
         <table className="w-[50vw] text-center text-sm text-white overflow-auto">
             <thead className="text-xl text-white uppercase bg-black">
                 <tr>
@@ -50,9 +53,9 @@ const Table = (props) => {
                     </th> : null}
                 </tr>
             </thead>
-            <tbody className='overflow-auto'>
+            <tbody className=''>
                 {
-                  memberData.map((member, index) => (
+                  members.map((member, index) => (
                   <tr key={index} className="border-b-2 border-gray-700">
                     <th scope="row" className="px-6 py-4 text-xl text-white whitespace-nowrap">
                       {member.name}
@@ -64,8 +67,16 @@ const Table = (props) => {
                       {member.position}
                     </td>
                    {permission === true ? <td className="px-6 py-4">
-                      <button className='py-2 px-3 hover:bg-emerald-500 hover:border-white border-2 text-white rounded-xl me-3'>Fix</button>
-                      <button className='py-2 px-3 hover:bg-red-600 hover:border-white border-2 text-white rounded-xl me-3'>Delete</button>
+                      <button className='py-2 px-3 hover:bg-emerald-500 hover:border-white border-2 text-white rounded-xl me-3'
+                      onClick={() => props.handleFix(member)}
+                      >
+                        Edit
+                      </button>
+                      <button className='py-2 px-3 hover:bg-red-600 hover:border-white border-2 text-white rounded-xl me-3'
+                      onClick={() => handleDelete(member.id)}
+                      >
+                        Delete
+                      </button>
                     </td> : null}
                   </tr>))
                 }

@@ -6,7 +6,7 @@ const Admin = () => {
 
   // For add member
   const uuid = Math.floor(Math.random() * 99);
-  const [, setId] = useState(0);
+  const [ids, setId] = useState();
   const [name, setMemberFname] = useState('');
   const [lastname, setMemberLname] = useState('');
   const [position, setMemberPos] = useState('');
@@ -21,13 +21,24 @@ const Admin = () => {
   const handleSubmit = (ev: React.FormEvent) => {
     ev.preventDefault();
 
-    setTeamMembers({
+    if (ids) {
+      setTeamMembers({
+        id: ids,
+        name: name,
+        lastname: lastname,
+        position: position,
+      });
+
+    } else {
+      setTeamMembers({
         id: uuid,
         name: name,
         lastname: lastname,
         position: position,
       });
+
     }
+  }
 
   // Function Edit Member
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -45,17 +56,17 @@ const Admin = () => {
         <div className='mb-8'>
           <form onSubmit={handleSubmit}>
             <input className='bg-transparent border-2 border-black rounded-xl px-5 py-2 text-white' placeholder='Name ...' type="text" 
-              name="em-name" id="emName"
+              name="em-name"
               value={name}
               onChange={(ev) => setMemberFname(ev.target.value)}
               />
             <input className='bg-transparent border-2 border-black rounded-xl px-5 py-2 text-white mx-4' placeholder='Lastname ...' type="text" 
-              name="em-last-name" id="emLastName"
+              name="em-last-name"
               value={lastname}
               onChange={(ev) => setMemberLname(ev.target.value)} 
               />
             <input className='bg-transparent border-2 border-black rounded-xl px-5 py-2 text-white' placeholder='Position ...' type="text" 
-              name="em-position" id="emPosition" 
+              name="em-position" 
               value={position}
               onChange={(ev) => setMemberPos(ev.target.value)}
               />

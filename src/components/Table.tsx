@@ -39,9 +39,30 @@ const Table: React.FC<TableProps> = (props) => {
   }
 
   useEffect(() => {
-    if (props.newMember && props.newMember.name !== '') {
-      setMembers([...members, props.newMember]);
+
+    const arrSize = members.filter((item) => item.id === props.newMember?.id);
+
+    if (arrSize.length > 0 ) {
+      const memberIndex = members.findIndex((item) => item.id === props.newMember?.id);
+
+      if (memberIndex !== -1) {
+        setMembers((prevMember) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const updateMember:any = [...prevMember];
+          updateMember[memberIndex] = props.newMember;
+          return updateMember;
+        });
+      }
+
+      console.log(`First If`)
+
+    } else if (props.newMember && props.newMember.name !== '') {
+      setMembers([props.newMember ,...members]);
+      
+      console.log(`second If`)
+
     }
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.newMember])
 

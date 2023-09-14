@@ -1,4 +1,3 @@
-import React from 'react';
 import './User.css';
 import Table from '../components/Table';
 
